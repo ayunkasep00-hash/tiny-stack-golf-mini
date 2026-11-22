@@ -9,8 +9,7 @@ k=+("0x"+H[y]),a=k>>2,b=k&3;
 x=y==1?1:y==2?4:y>47&y<52?2:0;
 if(f+x>=n)throw 9;
 g=f+1+x;
-if(s<a)throw 2;
-if(s-a+b>256)throw 3;
+if(s<a|256<s-a+b)throw s<a?2:3;
 f=g;
 if(y<3){if(!y)throw 0;S[s++]=y==1?p.readInt8(g-1):p.readInt32LE(g-4)}
 else if(y==3)s--;
@@ -42,4 +41,4 @@ else throw S[--s]&255;
 else throw 5;
 }};
 let{MAKEFUN_INPUT_DIR:I="/input",MAKEFUN_OUTPUT_DIR:O="/output"}=process.env;
-for(let d of D(I).sort()){let u="/"+d+"/",e;try{V(A(I+u+"program.bin"),A(I+u+"input.bin"))}catch(w){e=w}C(O+u,{recursive:true});B(O+u+"stdout.bin",o,"latin1");B(O+u+"exit.txt",""+e)}
+for(let d of D(I).sort()){let u="/"+d+"/";try{V(A(I+u+"program.bin"),A(I+u+"input.bin"))}catch(e){C(O+u,{recursive:true});B(O+u+"stdout.bin",o,"latin1");B(O+u+"exit.txt",""+e)}}
